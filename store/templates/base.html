@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Flex Sport</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.png' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body style="font-family: montserrat, Sans-serif;"> 
+        <div style="font-size: 12px; text-align: center; background-color: black; color:white; min-height: 20px; display:flex; justify-content:center; align-items:center;">
+            ENVIO GRATIS A DOMICILIO A TODO EL PAIS
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-start mr-auto">
+                    <a class="" href="{% url 'home' %}">
+                        <img src="{% static 'assets/logo.png' %}" alt="logo flex sport" width="250" height="100">
+                    </a>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>      
+                </div>
+            </div>
+        </nav>        
+        <div class="container-fluid" >
+            <div class="row">
+                <!-- Barra de navegación lateral -->
+                <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
+                    <div class="position-sticky">
+                        <h3 style="font-size: 14px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
+                            LIGAS
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <ul class="nav flex-column" id="ligas-section">
+                            {% for liga in ligas %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'equipos' liga.nombre %}?" style="color: black; display: flex; align-items: center;">
+                                        <img src="{{liga.logo.url}} " alt="{{liga.nombre}}" width="20" height="20" style="margin-right: 8px;">
+                                        <span style="font-size: 14px;">{{liga.nombre}}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="position-sticky">
+                        <h3 style="font-size: 14px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
+                            EQUIPOS
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <ul class="nav flex-column" id="equipos-section">
+                            {% for equipo in equipos %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'productos_por_equipo' equipo.nombre %}" style="color: black; display: flex; align-items: center;">
+                                        <img src="{{equipo.logo.url}} " alt="{{equipo.nombre}}" width="20" height="20" style="margin-right: 8px;">
+                                        <span style="font-size: 14px;">{{equipo.nombre}}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="position-sticky">
+                        <h3 style="font-size: 14px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
+                            JUGADORES
+                            <i class="bi bi-chevron-down"></i>
+                        </h3>
+                        <ul class="nav flex-column" id="jugadores-section">
+                            {% for jugador in jugadores %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'productos_por_jugador' jugador.nombre %}" style="color: black; display: flex; align-items: center;">
+                                        <img src="{{jugador.imagen.url}} " alt="{{jugador.nombre}}" width="20" height="20" style="margin-right: 8px;" class="rounded-circle">
+                                        <span style="font-size: 14px;">{{jugador.nombre}}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </nav>
+                <div class="col">
+                    {% block content %}
+                    <!-- ACA IRIA EL HEADER DE HOME.HTML -->
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5">
+            <div class="container">
+                <p class="m-0 text-center">©2024 Flex Sport - Todos los derechos reservados.</p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".toggle-section").click(function() {
+                    $(this).next("ul").slideToggle();
+                });
+            });
+        </script>
+    </body>
+</html>

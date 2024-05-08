@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        {% for categoria, ligas in ligas_por_categoria.items %}
+            <h2 style="margin-top: 20px; text-align: center; font-weight: bolder; font-size: 22px;">
+                {{ categoria.nombre }}
+            </h2>
+            <div class="row align-items-center  justify-content-center" style="flex-wrap: wrap; gap: 0px;">
+                {% include 'ligas.html' with categoria=categoria ligas=ligas %}
+            </div>
+        {% endfor %}
+    </header>
+{% endblock %}
