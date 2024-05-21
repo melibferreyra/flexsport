@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+<div>
     <header>
         {% for categoria, ligas in ligas_por_categoria.items %}
-            <h2 style="margin-top: 20px; text-align: center; font-weight: bolder; font-size: 22px;">
-                {{ categoria.nombre }}
-            </h2>
-            <div class="row align-items-center  justify-content-center" style="flex-wrap: wrap; gap: 0px;">
-                {% include 'ligas.html' with categoria=categoria ligas=ligas %}
+            <div>
+                <h2 style="margin: 20px 0 2% 35%; font-weight: bolder; font-size: 22px;">
+                    {{ categoria.nombre }}
+                </h2>
+                <div class="row align-items-center  justify-content-center" style="flex-wrap: wrap;">
+                    {% include 'ligas.html' with categoria=categoria ligas=ligas %}
+                </div>
             </div>
         {% endfor %}
     </header>
+    {% include 'carrera-en-camisetas.html' %}
+    {% include 'por-encargo.html' %}
 {% endblock %}

@@ -16,14 +16,19 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
     <body style="font-family: montserrat, Sans-serif;"> 
-        <div style="font-size: 12px; text-align: center; background-color: black; color:white; min-height: 20px; display:flex; justify-content:center; align-items:center;">
-            ENVIO GRATIS A DOMICILIO A TODO EL PAIS
+        <div style="font-size: 12px; text-align: center; background-color: black; color:white; min-height: 30px; display:flex; justify-content:center; align-items:center;">
+            <div style="font-size: 12px;">ENVIO GRATIS A DOMICILIO A TODO EL PAIS</div>
         </div>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <div class="d-flex justify-content-start mr-auto">
+                <div class="d-flex justify-content-start align-items-center">
+                    <form class="me-auto">
+                        <input class="form-control" type="search" placeholder="Buscar liga, equipo, jugador..." aria-label="Search" style="font-size: 14px;">
+                    </form>
+                </div>
+                <div class="d-flex mt-2" style="margin-right: 16%;">
                     <a class="" href="{% url 'home' %}">
-                        <img src="{% static 'assets/logo.png' %}" alt="logo flex sport" width="250" height="100">
+                        <img src="{% static 'assets/logo.png' %}" alt="logo flex sport" width="260" height="100">
                     </a>
                 </div>
                 <div class="d-flex justify-content-end align-items-center">
@@ -38,7 +43,7 @@
                 <!-- Barra de navegación lateral -->
                 <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
                     <div class="position-sticky">
-                        <h3 style="font-size: 14px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
+                        <h3 style="font-size: 16px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
                             LIGAS
                             <i class="bi bi-chevron-down"></i>
                         </h3>
@@ -54,7 +59,7 @@
                         </ul>
                     </div>
                     <div class="position-sticky">
-                        <h3 style="font-size: 14px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
+                        <h3 style="font-size: 16px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
                             EQUIPOS
                             <i class="bi bi-chevron-down"></i>
                         </h3>
@@ -70,14 +75,14 @@
                         </ul>
                     </div>
                     <div class="position-sticky">
-                        <h3 style="font-size: 14px; font-weight: bold; margin-top: 8px; cursor:pointer;" class="toggle-section">
+                        <h3 style="font-size: 16px; font-weight: bold; margin-top: 20px; cursor:pointer;" class="toggle-section">
                             JUGADORES
                             <i class="bi bi-chevron-down"></i>
                         </h3>
                         <ul class="nav flex-column" id="jugadores-section">
                             {% for jugador in jugadores %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'productos_por_jugador' jugador.nombre %}" style="color: black; display: flex; align-items: center;">
+                                    <a class="nav-link" href="{% url 'carrera_en_camisetas_jugador' jugador.nombre %}" style="color: black; display: flex; align-items: center;">
                                         <img src="{{jugador.imagen.url}} " alt="{{jugador.nombre}}" width="20" height="20" style="margin-right: 8px;" class="rounded-circle">
                                         <span style="font-size: 14px;">{{jugador.nombre}}</span>
                                     </a>
@@ -88,7 +93,7 @@
                 </nav>
                 <div class="col">
                     {% block content %}
-                    <!-- ACA IRIA EL HEADER DE HOME.HTML -->
+                        <!-- home.html -->
                     {% endblock %}
                 </div>
             </div>

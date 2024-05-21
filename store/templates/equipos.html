@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2 style="margin-top: 20px; text-align: center; font-weight: bolder; font-size: 22px;">Camisetas {{ liga.nombre }}</h2>
-        <div class="row align-items-center  justify-content-center" style="flex-wrap: wrap; gap: 8px;">
+    <h2 style="margin: 20px 0 2% 25%; font-weight: bolder; font-size: 22px;">Camisetas {{ liga.nombre }}</h2>
+        <div class="row" style="flex-wrap: wrap; gap: 30px; margin-left: 4%;">
             {% block equipos %}
                 {% if equipos_por_liga %}
                     {% for equipo in equipos_por_liga %}
-                        <div class="col-6 col-lg-2" style="width: 10%;">
-                            <div class="card h-100 text-center" style="border: none; background-color:#f5f5f5; border-radius: 8px;">
+                        <div class="col-6 col-lg-2" style="width: 15%;">
+                            <div class="card text-center" style="border: none; background-color:#f5f5f5; width: 100%; border-radius: 8px;">
                                 <div class="card-body d-flex flex-column">
                                     <a target="_blank" rel="noopener noreferrer" href="https://flexsportarg.com.ar/search/?q={{ equipo.nombre|lower }}" style="color: black; text-decoration: none;">
                                         <img src="{{ equipo.logo.url }}" width="50" height="50" alt="{{ equipo.nombre }}" style="object-fit: cover;">

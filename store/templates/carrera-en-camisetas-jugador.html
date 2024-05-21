@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mb-3">
+        <span  style="font-weight: bold; font-size: 22px; margin-left: 29%;">
+            {{ jugador.nombre }} - Carrera en Camisetas
+        </span>
+    </div>
+    <div style="text-align: start;">
+        <a href="{% url 'home' %}" style="color: black; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+            <span >
+                Inicio 
+            </span>
+        </a>
+        <a href="{% url 'carrera_en_camisetas' %}" style="color: black; text-decoration: none; border-bottom: 1px solid #eaeaea" onmouseover="this.style.borderBottomColor='black'" onmouseout="this.style.borderBottomColor='#eaeaea'">
+            <span >
+                / Carrera en Camisetas 
+            </span>
+        </a> 
+        <span> / {{ jugador.nombre }}</span>
+    </div>
+{% endblock %}

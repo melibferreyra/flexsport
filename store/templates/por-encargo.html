@@ -1,0 +1,12 @@
+{% load static %}
+{% block content %}
+    <section style="margin-top: 5%;">
+        {% for publicidad in publicidades %}
+            {% if forloop.first %}
+                <img src="{{ publicidad.imagen.url }}" alt="{{ publicidad.nombre }} - {{publicidad.categoria }}" class="img-fluid">
+            {% else %}
+                <img src="{{ publicidad.imagen.url }}" alt="{{ publicidad.nombre }} - {{publicidad.categoria }}" style="margin: 8%;">
+            {% endif %}
+        {% endfor %}
+    </section>
+{% endblock %}
